@@ -168,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
 
         // reset camera position
         gameCamera.position = new Vector3(0, 2, -10);
+
     }
 
     void PlayJumpSound()

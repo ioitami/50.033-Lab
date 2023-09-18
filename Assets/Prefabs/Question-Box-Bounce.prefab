@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 2826972244387784021}
   - component: {fileID: 2060192752964795573}
   - component: {fileID: 2453093432604125629}
-  - component: {fileID: 7952209536511696348}
+  - component: {fileID: 1015216725457594748}
   m_Layer: 8
   m_Name: question_block1_1
   m_TagString: Untagged
@@ -263,7 +263,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7952209536511696348
+--- !u!114 &1015216725457594748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,4 +276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 6165967659575629537}
-  player: {fileID: 0}
+  qnboxAnimator: {fileID: 2453093432604125629}
+  initialNumCoins: 1
+  coinPrefab: {fileID: 4790284924918671561, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
