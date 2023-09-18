@@ -975,6 +975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question-Box-Bounce (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2826972244387784021, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3470054581298296867, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.5
@@ -3580,6 +3584,10 @@ PrefabInstance:
     - target: {fileID: 2512305870312320371, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
       propertyPath: m_Name
       value: Question-Box-Bounce
+      objectReference: {fileID: 0}
+    - target: {fileID: 2826972244387784021, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3470054581298296867, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
       propertyPath: m_LocalPosition.x

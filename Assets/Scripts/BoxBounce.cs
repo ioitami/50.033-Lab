@@ -6,7 +6,6 @@ using UnityEditor.Build.Content;
 
 public class BoxBounce : MonoBehaviour
 {
-    public BoxCollider2D boxCollider;
     private Transform player;
     public Animator qnboxAnimator;
     public int initialNumCoins = 1;
@@ -14,14 +13,8 @@ public class BoxBounce : MonoBehaviour
 
     public GameObject coinPrefab;
 
-    private bool belowBox;
-
     private void Start()
     {
-        // Get references to the BoxCollider2D and PhysicsMaterial2D components
-        boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.density = 1f;
-
         player = GameObject.FindGameObjectWithTag("Player").transform;
         numCoins = initialNumCoins;
     }
@@ -35,18 +28,24 @@ public class BoxBounce : MonoBehaviour
             // if player above box
             if (player.transform.position.y - 0.5f >= this.transform.position.y)
             {
-                boxCollider.density = 1000f;
+                this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
             else
             {
-                boxCollider.density = 1f;
+                this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             }
         }
         else
         {
-            boxCollider.density = 1000f;
+            StartCoroutine(toStatic());
+            //boxCollider.density = 1000f;
         }
 
+    }
+    IEnumerator toStatic()
+    {
+        yield return new WaitForSeconds(.5f);
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 
     void OnCollisionEnter2D(Collision2D col)
