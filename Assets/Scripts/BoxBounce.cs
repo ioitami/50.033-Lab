@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEditor.Build.Content;
-using UnityEngine;
 
 public class BoxBounce : MonoBehaviour
 {
