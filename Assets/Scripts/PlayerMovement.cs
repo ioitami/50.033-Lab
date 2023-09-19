@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
     public JumpOverGoomba jumpOverGoomba;
     public Camera Camgameover;
-    public TextMeshProUGUI gameoverText;
 
     public Animator marioAnimator;
     public Transform gameCamera;
@@ -34,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
     // for audio
     public AudioSource marioAudio;
     public AudioClip marioDeath;
+
+    public GameManager gameManager;
 
 
 
@@ -44,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
 
-        gameoverText.enabled = false;
-
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
     }
@@ -53,28 +52,27 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // toggle state
-        if (Input.GetKeyDown("a") && faceRightState)
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
+    }
+
+    void FlipMarioSprite(int value)
+    {
+        if (value == -1 && faceRightState)
         {
             faceRightState = false;
             marioSprite.flipX = true;
-            if (marioBody.velocity.x > 5f)
-            {
+            if (marioBody.velocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
-            }
+
         }
 
-        if (Input.GetKeyDown("d") && !faceRightState)
+        else if (value == 1 && !faceRightState)
         {
             faceRightState = true;
             marioSprite.flipX = false;
-            if (marioBody.velocity.x < -5f)
-            {
+            if (marioBody.velocity.x < -0.05f)
                 marioAnimator.SetTrigger("onSkid");
-            }
         }
-
-        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));
     }
 
     int collisionLayerMask = (1 << 6) | (1 << 7) | (1 << 8);
@@ -89,35 +87,60 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // FixedUpdate is called 50 times a second
+    private bool moving = false;
     void FixedUpdate()
     {
-        if (alive){
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
-
-            if (Mathf.Abs(moveHorizontal) > 0)
-            {
-                Vector2 movement = new Vector2(moveHorizontal, 0);
-                // check if it doesn't go beyond maxSpeed
-                if (marioBody.velocity.magnitude < maxSpeed)
-                    marioBody.AddForce(movement * speed);
-            }
-
-            // stop
-            if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
-            {
-                // stop
-                marioBody.velocity = Vector2.zero;
-            }
-
-            if (Input.GetKeyDown("space") && onGroundState)
-            {
-                marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
-                onGroundState = false;
-                // update animator state
-                marioAnimator.SetBool("onGround", onGroundState);
-            }
+        if (alive && moving)
+        {
+            Move(faceRightState == true ? 1 : -1);
         }
-        
+    }
+    void Move(int value)
+    {
+
+        Vector2 movement = new Vector2(value, 0);
+        // check if it doesn't go beyond maxSpeed
+        if (marioBody.velocity.magnitude < maxSpeed)
+            marioBody.AddForce(movement * speed);
+    }
+
+    private bool jumpedState = false;
+    public void Jump()
+    {
+        if (alive && onGroundState)
+        {
+            // jump
+            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+            onGroundState = false;
+            jumpedState = true;
+            // update animator state
+            marioAnimator.SetBool("onGround", onGroundState);
+
+        }
+    }
+    public void JumpHold()
+    {
+        if (alive && jumpedState)
+        {
+            // jump higher
+            marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
+            jumpedState = false;
+
+        }
+    }
+
+    public void MoveCheck(int value)
+    {
+        if (value == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            FlipMarioSprite(value);
+            moving = true;
+            Move(value);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -131,36 +154,14 @@ public class PlayerMovement : MonoBehaviour
             alive = false;
         }
     }
-    public void RestartButtonCallback(int input)
-    {
-        Debug.Log("Restart!");
-        // reset everything
-        ResetGame();
-        // resume time
-        Time.timeScale = 1.0f;
-    }
-    private void ResetGame()
+
+    public void GameRestart()
     {
         // reset position
         marioBody.transform.position = new Vector3(-6.5f, -0.5f, 0.0f);
-
         // reset sprite direction
         faceRightState = true;
         marioSprite.flipX = false;
-
-        // reset score
-        scoreText.text = "Score: 0";
-        // reset Goomba
-        foreach (Transform eachChild in enemies.transform)
-        {
-            eachChild.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
-        }
-        // reset score
-        jumpOverGoomba.score = 0;
-
-        Camgameover.backgroundColor = new Color(138f/255f,139f/255f,255f/255f);
-        gameoverText.enabled = false;
-        scoreText.transform.localPosition = new Vector3(-693, 391, 0);
 
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
@@ -169,6 +170,8 @@ public class PlayerMovement : MonoBehaviour
         // reset camera position
         gameCamera.position = new Vector3(0, 2, -10);
 
+        //reset background color
+        Camgameover.backgroundColor = new Color(138f / 255f, 139f / 255f, 255f / 255f);
     }
 
     void PlayJumpSound()
@@ -185,9 +188,8 @@ public class PlayerMovement : MonoBehaviour
         // stop time
         Time.timeScale = 0.0f;
         // set gameover scene
-        //gameManager.GameOver();
+        gameManager.GameOver();
         Camgameover.backgroundColor = Color.black;
-        gameoverText.enabled = true;
-        scoreText.transform.localPosition = new Vector3(0, 0, 0);
+        //scoreText.transform.localPosition = new Vector3(0, 0, 0);
     }
 }

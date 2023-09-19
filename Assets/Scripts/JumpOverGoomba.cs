@@ -16,6 +16,8 @@ public class JumpOverGoomba : MonoBehaviour
     public Vector3 boxSize;
     public float maxDistance;
     public LayerMask layerMask;
+
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,12 +33,12 @@ public class JumpOverGoomba : MonoBehaviour
 
     void FixedUpdate()
     {
-        // mario jumps
-        if (Input.GetKeyDown("space") && onGroundCheck())
-        {
-            onGroundState = false;
-            countScoreState = true;
-        }
+        //// mario jumps
+        //if (Input.GetKeyDown("space") && onGroundCheck())
+        //{
+        //    onGroundState = false;
+        //    countScoreState = true;
+        //}
 
         // when jumping, and Goomba is near Mario and we haven't registered our score
         if (!onGroundState && countScoreState)
@@ -44,9 +46,7 @@ public class JumpOverGoomba : MonoBehaviour
             if (Mathf.Abs(transform.position.x - enemyLocation.position.x) < 0.5f)
             {
                 countScoreState = false;
-                score++;
-                scoreText.text = "Score: " + score.ToString();
-                Debug.Log(score);
+                gameManager.IncreaseScore(1);
             }
         }
     }
