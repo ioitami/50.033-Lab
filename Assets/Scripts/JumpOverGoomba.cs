@@ -34,11 +34,11 @@ public class JumpOverGoomba : MonoBehaviour
     void FixedUpdate()
     {
         //// mario jumps
-        //if (Input.GetKeyDown("space") && onGroundCheck())
-        //{
-        //    onGroundState = false;
-        //    countScoreState = true;
-        //}
+        if (Input.GetKeyDown("space") && onGroundCheck())
+        {
+           onGroundState = false;
+           countScoreState = true;
+        }
 
         // when jumping, and Goomba is near Mario and we haven't registered our score
         if (!onGroundState && countScoreState)

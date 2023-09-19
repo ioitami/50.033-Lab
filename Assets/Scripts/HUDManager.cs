@@ -42,6 +42,7 @@ public class HUDManager : MonoBehaviour
     public void SetScore(int score)
     {
         scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
+        Debug.Log("score is updated!");
     }
 
 

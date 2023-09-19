@@ -17,7 +17,6 @@ public class coinBounce : MonoBehaviour
         coinBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
         StartCoroutine(playSoundWithDelay(coinGet, lifetime));
         Destroy(this.gameObject, lifetime + 1f);
-
     }
 
     // Update is called once per frame
@@ -30,5 +29,6 @@ public class coinBounce : MonoBehaviour
         yield return new WaitForSeconds(delay);
         coinAudio.PlayOneShot(clip);
         this.gameObject.GetComponent<Renderer>().enabled = false;
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 }

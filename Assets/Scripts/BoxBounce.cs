@@ -12,6 +12,7 @@ public class BoxBounce : MonoBehaviour
     private int numCoins = 1;
 
     public GameObject coinPrefab;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -78,6 +79,12 @@ public class BoxBounce : MonoBehaviour
     void spawnCoin()
     {
         Instantiate(coinPrefab, this.transform);
+        StartCoroutine(increaseScoreDelay(1.4f));
+    }
+
+    IEnumerator increaseScoreDelay(float delay){
+        yield return new WaitForSeconds(delay);
+        gameManager.IncreaseScore(1);
     }
 
 }
