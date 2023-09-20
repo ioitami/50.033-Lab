@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [System.NonSerialized]
     public bool alive = true;
 
     private float originalX;
@@ -36,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void ComputeVelocity()
     {
-        velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);
+        velocity = new Vector2(moveRight * maxOffset / enemyPatroltime, 0);
     }
     void Movegoomba()
     {
@@ -70,14 +69,6 @@ public class EnemyMovement : MonoBehaviour
         originalX = transform.position.x;
         moveRight = -1;
         ComputeVelocity();
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        // if (col.gameObject.CompareTag("Player") && col.contacts[0].normal.y < 0)
-        // {
-        //     Debug.Log("Goomba stomped!");
-        // }
     }
 
     private void Die(){
