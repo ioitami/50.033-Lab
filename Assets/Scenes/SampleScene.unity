@@ -1147,6 +1147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 519337872}
     m_Modifications:
+    - target: {fileID: 1015216725457594748, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 42252452}
     - target: {fileID: 2512305870312320371, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
       propertyPath: m_Name
       value: Question-Box-Bounce (2)
@@ -2147,6 +2151,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 519337872}
     m_Modifications:
+    - target: {fileID: 1015216725457594748, guid: d7f412fe9aec41f47b133234c0ead979, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 42252452}
     - target: {fileID: 2512305870312320371, guid: d7f412fe9aec41f47b133234c0ead979, type: 3}
       propertyPath: m_Name
       value: brick_brown-coin
@@ -2387,6 +2395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 519337872}
     m_Modifications:
+    - target: {fileID: 1015216725457594748, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 42252452}
     - target: {fileID: 2512305870312320371, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
       propertyPath: m_Name
       value: Question-Box-Bounce (1)
@@ -3940,6 +3952,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 519337872}
     m_Modifications:
+    - target: {fileID: 1015216725457594748, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 42252452}
     - target: {fileID: 2512305870312320371, guid: c52434b852fe5174684409672f9cf2f4, type: 3}
       propertyPath: m_Name
       value: Question-Box-Bounce
