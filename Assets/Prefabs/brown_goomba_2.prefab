@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5455057197007547663}
   - component: {fileID: 9050678075577959317}
   - component: {fileID: 3967371840081299850}
+  - component: {fileID: 5516097196477903279}
   m_Layer: 7
   m_Name: brown_goomba_2
   m_TagString: Enemy
@@ -171,4 +172,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c22dff5b0aebcd40a4b7b4a6a0425cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goombaAnimator: {fileID: 5516097196477903279}
   startPosition: {x: 11.5, y: -0.5, z: 0}
+--- !u!95 &5516097196477903279
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579071228992418841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72a9a3ae3588a72499b3ac0f67cdf0e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -23,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     public TextMeshProUGUI scoreText;
     public GameObject enemies;
-
-    public JumpOverGoomba jumpOverGoomba;
     public Camera Camgameover;
 
     public Animator marioAnimator;
@@ -32,11 +30,12 @@ public class PlayerMovement : MonoBehaviour
 
     // for audio
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
+    public AudioSource marioDeath;
 
     public GameManager gameManager;
 
-
+    public delegate void StompEnemyBelow();
+    public event StompEnemyBelow StompBelow;
 
     void Start()
     {
@@ -145,13 +144,19 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && alive)
+        if (other.gameObject.CompareTag("Enemy") && alive && other.transform.position.y >= transform.position.y - 0.1f)
         {
-            Debug.Log("Collided with goomba!");
+            Debug.Log("Killed by goomba!");
+            Debug.Log(other.transform.position.y + "," + transform.position.y);
             // play death animation
             marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath);
+            marioAudio.PlayOneShot(marioDeath.clip);
             alive = false;
+        }
+        else if(other.gameObject.CompareTag("Enemy") && alive && onGroundState == false){
+            Debug.Log("Stomped goomba!");
+            StompBelow?.Invoke();
+            gameManager.IncreaseScore(1);
         }
     }
 
