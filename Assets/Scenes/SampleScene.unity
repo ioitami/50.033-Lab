@@ -1648,6 +1648,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3967371840081299850, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1393404859}
+    - target: {fileID: 3967371840081299850, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
       propertyPath: startPosition.x
       value: 15
       objectReference: {fileID: 0}
@@ -1845,6 +1849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3967371840081299850, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1393404859}
     - target: {fileID: 3967371840081299850, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
       propertyPath: startPosition.x
       value: 40
@@ -2601,7 +2609,6 @@ GameObject:
   - component: {fileID: 1393404859}
   - component: {fileID: 1393404860}
   - component: {fileID: 1393404863}
-  - component: {fileID: 1393404864}
   - component: {fileID: 1393404865}
   - component: {fileID: 1393404867}
   - component: {fileID: 1393404868}
@@ -2775,26 +2782,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9375, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1393404864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1393404858}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aee194b80cd99146aa26d55ad0eccde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyLocation: {fileID: 2022924302}
-  scoreText: {fileID: 1635523141}
-  boxSize: {x: 0.5, y: 1, z: 0}
-  maxDistance: 0.5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  gameManager: {fileID: 42252452}
 --- !u!95 &1393404865
 Animator:
   serializedVersion: 5
@@ -4295,6 +4282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3967371840081299850, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1393404859}
     - target: {fileID: 3967371840081299850, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
       propertyPath: startPosition.x
       value: 2

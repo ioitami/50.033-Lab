@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Build.Content;
 using Unity.VisualScripting;
+using System;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class EnemyMovement : MonoBehaviour
         goombaAnimator.SetBool("isDead", false);
         goombaAnimator.SetTrigger("gameRestart");
         this.GetComponent<BoxCollider2D>().enabled = true;
+        this.gameObject.SetActive(true);
 
         transform.localPosition = startPosition;
         originalX = transform.position.x;
@@ -71,10 +73,12 @@ public class EnemyMovement : MonoBehaviour
         ComputeVelocity();
     }
 
-    private void Die(){
-        goombaAnimator.SetBool("isDead", true);
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        StartCoroutine(makeInvis(1f));
+    private void Die(String nameObj){
+        if(this.gameObject.name == nameObj){
+            goombaAnimator.SetBool("isDead", true);
+            this.GetComponent<BoxCollider2D>().enabled = false;
+            StartCoroutine(makeInvis(1f));
+        }
     }
 
     IEnumerator makeInvis(float delay){

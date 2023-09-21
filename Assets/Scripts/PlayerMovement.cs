@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameManager gameManager;
 
-    public delegate void StompEnemyBelow();
+    public delegate void StompEnemyBelow(String name);
     public event StompEnemyBelow StompBelow;
 
     void Start()
@@ -153,9 +154,9 @@ public class PlayerMovement : MonoBehaviour
             marioAudio.PlayOneShot(marioDeath.clip);
             alive = false;
         }
-        else if(other.gameObject.CompareTag("Enemy") && alive && onGroundState == false){
-            Debug.Log("Stomped goomba!");
-            StompBelow?.Invoke();
+        else if(other.gameObject.CompareTag("Enemy") && alive){
+            Debug.Log("Stomped goomba:" + other.gameObject.name);
+            StompBelow?.Invoke(other.gameObject.name);
             gameManager.IncreaseScore(1);
         }
     }

@@ -33,6 +33,28 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-5901670084302938507
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 62cd6d0f469f58549adb692e72de93a5
+  m_EffectName: Compressor
+  m_MixLevel: 26806a54262ba2c47a25b60f8fedef16
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: 3b5a23212bd25de40bbe6bbb3d1e655d
+  - m_ParameterName: Attack
+    m_GUID: 6823028ce4a031d42880af8b0693592b
+  - m_ParameterName: Release
+    m_GUID: b79a6a35b2a559949ba83a12b4871e5d
+  - m_ParameterName: Make up gain
+    m_GUID: 2923ad2c2830aac44bab600b3d647201
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-5555374124533895910
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -342,6 +364,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 1232296426844328753}
+  - {fileID: -5901670084302938507}
   m_UserColorIndex: 8
   m_Mute: 0
   m_Solo: 0
@@ -468,12 +491,15 @@ AudioMixerSnapshotController:
     36321c80191a2004bbc0d57b7dea1283: 1
     27406c8038d350f499bc6f6d4f8ef280: 5.8
     04bd9ee09a7109a44b5b0753d26f5a9e: 0.1
+    3b5a23212bd25de40bbe6bbb3d1e655d: -20
     538a6d022b7394140a6ceb90cbc4f4c7: 0.1
     3ebaee02faf7b874eacff6024ec70138: -65
+    e0a457122a0c1b74d9e467745fa1b374: -50.3
     cb249b72da8c59d4d93eaac82bed4975: 1.72
     f111c4332cb7e6046bd1befdf70284f9: 0
     15b82463f89a53e4eb60c43396766912: 10
     9caa8873053b1a54d8121375fb7b507d: -80
+    b79a6a35b2a559949ba83a12b4871e5d: 20
     d5c703d506aecba428335ca98105d38c: -10
     d959dce67531863409ae7b044ae89ee2: 0
     af3ee068e2abab5499d51ae4c193ac28: 1
@@ -484,6 +510,9 @@ AudioMixerSnapshotController:
     1227d1eadc8a04a4c80af9fac7315030: 0.1
     70db0d0ba4a10a94bb9d29c5ce455c89: 1000
     f777da9bcc742f24097dffb22fb09fc2: 5.8
+    6823028ce4a031d42880af8b0693592b: 10
+    91f2a39c05a97bc4894cb057494919a7: 0
+    30cf3a3df0b8f094fbfcab6d8305ebcc: 5.08
     7e67180eadcbc404aa3ac38497358d9c: 2000
     69f1cd7fc1019fd45a68d067da57cd1f: 0.1
   m_TransitionOverrides: {}
