@@ -18,6 +18,8 @@ public class EnemyMovement : MonoBehaviour
 
     public Animator goombaAnimator;
 
+    public AudioSource enemyAudio;
+
 
     public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -75,6 +77,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Die(String nameObj){
         if(this.gameObject.name == nameObj){
+            enemyAudio.PlayOneShot(enemyAudio.clip);
             goombaAnimator.SetBool("isDead", true);
             this.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine(makeInvis(1f));
