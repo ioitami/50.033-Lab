@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     // Start is called before the first frame update
 
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     public delegate void StompEnemyBelow(String name);
     public event StompEnemyBelow StompBelow;
+    
 
     void Start()
     {
@@ -47,6 +49,19 @@ public class PlayerMovement : MonoBehaviour
 
         // update animator state
         marioAnimator.SetBool("onGround", onGroundState);
+
+        // subscribe to scene manager scene change
+        SceneManager.activeSceneChanged += SetStartingPosition;
+    }
+
+    public void SetStartingPosition(Scene current, Scene next)
+    {
+        if (next.name == "World 1-2")
+        {
+            Debug.Log("Change world 1-2");
+            // change the position accordingly in your World-1-2 case
+            this.transform.position = new Vector3(-6.5f, -0.5f, 0.0f);
+        }
     }
 
     // Update is called once per frame

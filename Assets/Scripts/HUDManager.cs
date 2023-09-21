@@ -5,7 +5,7 @@ using TMPro;
 using UnityEditor.Build.Content;
 using UnityEngine.Audio;
 
-public class HUDManager : MonoBehaviour
+public class HUDManager : Singleton<HUDManager>
 {
     private Vector3[] scoreTextPosition = {
         new Vector3(-450, 391, 0),
