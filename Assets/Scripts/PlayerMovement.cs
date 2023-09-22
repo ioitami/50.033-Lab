@@ -10,8 +10,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
 {
     // Start is called before the first frame update
 
-    [System.NonSerialized]
-    public bool alive = true;
     private Rigidbody2D marioBody;
     public float speed = 50f;
     public float maxSpeed = 65f;
@@ -34,11 +32,20 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public AudioSource marioAudio;
     public AudioSource marioDeath;
 
-    public GameManager gameManager;
 
-    public delegate void StompEnemyBelow(String name);
-    public event StompEnemyBelow StompBelow;
+    //public delegate void StompEnemyBelow(String name);
+    //public event StompEnemyBelow StompBelow;
+    private Camera camBG;
+
+    [System.NonSerialized]
+    public bool alive = true;
     
+
+    void Awake(){
+        // other instructions
+        // subscribe to Game Restart event
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
 
     void Start()
     {
@@ -171,8 +178,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
         }
         else if(other.gameObject.CompareTag("Enemy") && alive){
             Debug.Log("Stomped goomba:" + other.gameObject.name);
-            StompBelow?.Invoke(other.gameObject.name);
-            gameManager.IncreaseScore(1);
+            //StompBelow?.Invoke(other.gameObject.name);
+            GameManager.instance.IncreaseScore(1);
         }
     }
 
@@ -189,10 +196,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
         alive = true;
 
         // reset camera position
-        gameCamera.position = new Vector3(0, 2, -10);
-
-        //reset background color
-        Camgameover.backgroundColor = new Color(138f / 255f, 139f / 255f, 255f / 255f);
+        camBG = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        camBG.backgroundColor = new Color(138f / 255f, 139f / 255f, 255f / 255f);
     }
 
     void PlayJumpSound()
@@ -209,7 +214,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
         // stop time
         Time.timeScale = 0.0f;
         // set gameover scene
-        gameManager.GameOver();
+        GameManager.instance.GameOver();
         Camgameover.backgroundColor = Color.black;
         //scoreText.transform.localPosition = new Vector3(0, 0, 0);
     }

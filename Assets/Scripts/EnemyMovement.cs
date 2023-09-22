@@ -7,7 +7,6 @@ using System;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public bool alive = true;
 
     private float originalX;
     private float maxOffset = 5.0f;
@@ -33,8 +32,8 @@ public class EnemyMovement : MonoBehaviour
 
         goombaAnimator.SetBool("isDead", false);
 
-        PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
-        playerMovement.StompBelow += Die;
+        //PlayerMovement playerMovement = FindObjectOfType<PlayerMovement>();
+        //playerMovement.StompBelow += Die;
     }
     void ComputeVelocity()
     {
@@ -75,8 +74,19 @@ public class EnemyMovement : MonoBehaviour
         ComputeVelocity();
     }
 
-    private void Die(String nameObj){
-        if(this.gameObject.name == nameObj){
+    // private void Die(String nameObj){
+    //     if(this.gameObject.name == nameObj){
+    //         enemyAudio.PlayOneShot(enemyAudio.clip);
+    //         goombaAnimator.SetBool("isDead", true);
+    //         this.GetComponent<BoxCollider2D>().enabled = false;
+    //         StartCoroutine(makeInvis(1f));
+    //     }
+    // }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && other.transform.position.y - 0.1f >= transform.position.y)
+        {
             enemyAudio.PlayOneShot(enemyAudio.clip);
             goombaAnimator.SetBool("isDead", true);
             this.GetComponent<BoxCollider2D>().enabled = false;

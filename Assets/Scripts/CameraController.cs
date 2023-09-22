@@ -11,6 +11,12 @@ public class CameraController : MonoBehaviour
     private float endX; // largest x-coordinate of the camera
     private float viewportHalfWidth;
 
+    void Awake(){
+        // other instructions
+        // subscribe to Game Restart event
+        //GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +29,7 @@ public class CameraController : MonoBehaviour
         endX  =  endLimit.transform.position.x  -  viewportHalfWidth;
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
+
     }
 
     // Update is called once per frame
