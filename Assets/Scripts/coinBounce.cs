@@ -14,7 +14,7 @@ public class coinBounce : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coinBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+        //coinBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
         StartCoroutine(playSoundWithDelay(coinGet, lifetime));
         Destroy(this.gameObject, lifetime + 1f);
     }
