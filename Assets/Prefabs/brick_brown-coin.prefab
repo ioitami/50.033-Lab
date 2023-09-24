@@ -277,10 +277,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupAnimator: {fileID: 4343300321477459244}
-  powerup: {fileID: 1488656272002907836}
+  powerup: {fileID: 6814509782259905667}
   isBreakable: 0
   initialNumCoins: 1
-  coinPrefab: {fileID: 0}
 --- !u!1001 &3712646194361445160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,10 +335,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4790284924918671561, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1488656272002907836}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
 --- !u!95 &4343300321477459244 stripped
 Animator:
@@ -351,22 +347,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7108320512977252151, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
   m_PrefabInstance: {fileID: 3712646194361445160}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8214419250349147105 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4790284924918671561, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
+--- !u!114 &6814509782259905667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7861024911250694059, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
   m_PrefabInstance: {fileID: 3712646194361445160}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1488656272002907836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8214419250349147105}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 278c7fdc0a3ef954a8f77e2334ac59d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  spawned: 0

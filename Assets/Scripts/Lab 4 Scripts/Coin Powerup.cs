@@ -7,10 +7,13 @@ public class CoinPowerup : BasePowerup
 {
     // setup this object's type
     // instantiate variables
+    private GameManager manager;
     protected override void Start()
     {
         base.Start(); // call base class Start()
         this.type = PowerupType.Coin;
+
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // interface implementation
@@ -25,6 +28,8 @@ public class CoinPowerup : BasePowerup
 
         this.GetComponent<Animator>().SetTrigger("spawned");
         //PowerupManager.instance.powerupCollected.Invoke(this);
+        //ApplyPowerup(manager);
+        spawned = false;
     }
 
 
@@ -32,11 +37,7 @@ public class CoinPowerup : BasePowerup
     public override void ApplyPowerup(MonoBehaviour i)
     {
         // TODO: do something with the object
-        GameManager manager;
-        bool result = i.TryGetComponent<GameManager>(out manager);
+        manager.IncreaseScore(1);
 
-        if(result){
-            manager.IncreaseScore(1);
-        }
     }
 }

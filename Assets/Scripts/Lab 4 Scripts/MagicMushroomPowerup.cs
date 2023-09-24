@@ -1,6 +1,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MagicMushroomPowerup : BasePowerup
@@ -11,7 +12,8 @@ public class MagicMushroomPowerup : BasePowerup
     {
         base.Start(); // call base class Start()
         this.type = PowerupType.MagicMushroom;
-        rigidBody.bodyType = RigidbodyType2D.Static;
+        //this.gameObject.SetActive(false);
+        
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -38,11 +40,12 @@ public class MagicMushroomPowerup : BasePowerup
     // interface implementation
     public override void SpawnPowerup()
     {
-        rigidBody.bodyType = RigidbodyType2D.Dynamic;
+        //this.gameObject.SetActive(true);
+        Debug.Log("push mush");
         spawned = true;
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
+        //StartCoroutine(Push(1f));
     }
-
 
     // interface implementation
     public override void ApplyPowerup(MonoBehaviour i)

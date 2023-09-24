@@ -39,7 +39,6 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
             this.GetComponent<Animator>().SetBool("DisableBlock", true);
             // spawn the powerup
             powerupAnimator.SetTrigger("spawned");
-
             Debug.Log("MUSHROOM SPAWNED");
         }
     }

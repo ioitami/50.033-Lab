@@ -9,14 +9,19 @@ public class BrickPowerupController : MonoBehaviour, IPowerupController
     public bool isBreakable = false;
     
     public int initialNumCoins = 1;
-    private int numCoins = 1;
+    public int numCoins = 1;
 
     private GameObject player;
+    
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
         numCoins = initialNumCoins;
+
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -38,36 +43,30 @@ public class BrickPowerupController : MonoBehaviour, IPowerupController
 
         private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && other.contacts[0].normal.y > 0 ){
-            if (!powerup.hasSpawned){
+        if (other.gameObject.tag == "Player" && other.contacts[0].normal.y > 0){
+            if (numCoins > 0){
 
                 // spawn the powerup
-                powerupAnimator.SetTrigger("spawned");
-
-                Debug.Log("COIN SPAWNED");
-
-                if(!isBreakable){
-                    // set disabled if not breakable
-                    this.GetComponent<Animator>().SetTrigger("spawned");
-                    this.GetComponent<Animator>().SetBool("DisableBlock", true);
-                }
+                powerup.SpawnPowerup();
+                coinDecrease();
             }
-            else{
-                if(isBreakable){
+            if(numCoins <= 0 && !isBreakable){
+                // set disabled if not breakable
+                this.GetComponent<Animator>().SetBool("DisableBlock", true);
+            }
 
-                }
-            } 
 
         }
     }
 
-    public void RestartButtonCallback(int input)
+    public void GameRestart()
     {
         this.GetComponent<Animator>().SetBool("DisableBlock", false);
         numCoins = initialNumCoins;
     }
 
-    void coinDecrease()
+
+    void coinDecrease() 
     {
         numCoins -= 1;
     }
