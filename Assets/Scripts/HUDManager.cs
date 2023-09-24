@@ -8,7 +8,7 @@ using UnityEngine.Audio;
 public class HUDManager : MonoBehaviour
 {
     private Vector3[] scoreTextPosition = {
-        new Vector3(-450, 391, 0),
+        new Vector3(-640, 391, 0),
         new Vector3(0, 0, 0)
         };
     private Vector3[] restartButtonPosition = {
@@ -16,12 +16,16 @@ public class HUDManager : MonoBehaviour
         new Vector3(0, -150, 0)
     };
 
+    public GameObject highscoreText;
+    public IntVariable gameScore;
+
     public GameObject scoreText;
     public Transform restartButton;
 
     public GameObject gameoverText;
     private AudioMixerSnapshot snapshot;
     public AudioMixer mixer;
+    public GameObject pausebtn;
 
     void Awake()
     {
@@ -50,6 +54,8 @@ public class HUDManager : MonoBehaviour
     {
         // hide gameover text
         gameoverText.SetActive(false);
+        highscoreText.SetActive(false);
+        pausebtn.SetActive(true);
         scoreText.transform.localPosition = scoreTextPosition[0];
         restartButton.localPosition = restartButtonPosition[0];
 
@@ -67,10 +73,16 @@ public class HUDManager : MonoBehaviour
     public void GameOver()
     {
         gameoverText.SetActive(true);
+        pausebtn.SetActive(false);
         scoreText.transform.localPosition = scoreTextPosition[1];
         restartButton.localPosition = restartButtonPosition[1];
 
         snapshot = mixer.FindSnapshot("Death");
         snapshot.TransitionTo(0.01f); //transition to snapshot
+
+        // set highscore
+        highscoreText.GetComponent<TextMeshProUGUI>().text = "TOP- " + gameScore.previousHighestValue.ToString("D6");
+        // show
+        highscoreText.SetActive(true);
     }
 }

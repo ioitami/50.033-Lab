@@ -9,13 +9,13 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
+    public GameConstants gameConstants;
+    float deathImpulse;
+    float upSpeed;
+    float maxSpeed;
+    float speed;
 
     private Rigidbody2D marioBody;
-    public float speed = 50f;
-    public float maxSpeed = 65f;
-    public float upSpeed = 30f;
-
-    public float deathImpulse = 15f;
     private bool onGroundState = true;
 
     private SpriteRenderer marioSprite;
@@ -49,6 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        // Set constants
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        upSpeed = gameConstants.upSpeed;
+
+
         marioSprite = GetComponent<SpriteRenderer>();
 
         Application.targetFrameRate = 30;
