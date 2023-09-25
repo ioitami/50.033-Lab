@@ -1740,6 +1740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseIcon: {fileID: 21300000, guid: a51aa9a74b6a7724fb9df8043e5184ad, type: 3}
   playIcon: {fileID: 21300000, guid: 6142fff32b0787a48abfac253e1a1a2f, type: 3}
+  gameSound: {fileID: 1555913776}
 --- !u!114 &728130119
 MonoBehaviour:
   m_ObjectHideFlags: 0

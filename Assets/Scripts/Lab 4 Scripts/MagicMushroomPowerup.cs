@@ -65,6 +65,7 @@ public class MagicMushroomPowerup : BasePowerup
         spawned = false;
 
         StartCoroutine(ActiveObject());
+        GameObject.Find("Mushroom").GetComponent<Animator>().SetBool("isSpawned", false);
     }
 
     // interface implementation
