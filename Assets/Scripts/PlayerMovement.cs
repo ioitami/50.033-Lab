@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Change world 1-2");
             // change the position accordingly in your World-1-2 case
-            this.transform.position = new Vector3(-6.5f, -0.5f, 0.0f);
+            //this.transform.position = new Vector3(-6.5f, -0.5f, 0.0f);
         }
     }
 

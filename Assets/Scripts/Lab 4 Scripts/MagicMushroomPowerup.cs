@@ -12,18 +12,27 @@ public class MagicMushroomPowerup : BasePowerup
     {
         base.Start(); // call base class Start()
         this.type = PowerupType.MagicMushroom;
-        //this.gameObject.SetActive(false);
-        
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        this.GetComponent<Rigidbody2D>().simulated = false;
+        StartCoroutine(ActiveObject());
+
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    IEnumerator ActiveObject()
+    {
+        yield return new WaitWhile(() => this.GetComponent<Rigidbody2D>().bodyType == RigidbodyType2D.Static);
+        this.GetComponent<Rigidbody2D>().simulated = true;
+        rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
+    }
+        void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: do something when colliding with Player
 
             // then destroy powerup (optional)
-            DestroyPowerup();
+            gameObject.SetActive(false);
 
         }
         else if (col.gameObject.layer == 10) // else if hitting Pipe, flip travel direction
@@ -40,11 +49,22 @@ public class MagicMushroomPowerup : BasePowerup
     // interface implementation
     public override void SpawnPowerup()
     {
-        //this.gameObject.SetActive(true);
+        GameObject.Find("Mushroom").GetComponent<Animator>().SetBool("isSpawned", true);
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         Debug.Log("push mush");
         spawned = true;
-        rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse); // move to the right
-        //StartCoroutine(Push(1f));
+    }
+
+    public void GameRestart()
+    {
+        gameObject.SetActive(true);
+        GameObject.Find("Mushroom").GetComponent<Animator>().SetBool("isSpawned", false);
+        this.transform.localPosition = new Vector3(0f, 0f, 0f);
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        this.GetComponent<Rigidbody2D>().simulated = false;
+        spawned = false;
+
+        StartCoroutine(ActiveObject());
     }
 
     // interface implementation

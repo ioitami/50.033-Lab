@@ -12,6 +12,8 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
             // show disabled sprite
             this.GetComponent<Animator>().SetBool("DisableBlock", true);
             // spawn the powerup
-            powerupAnimator.SetTrigger("spawned");
+            powerupAnimator.SetBool("isSpawned", true);
             Debug.Log("MUSHROOM SPAWNED");
         }
     }
@@ -49,7 +51,10 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         transform.localPosition = new Vector3(0, 0, 0);
     }
-
-
+    public void GameRestart()
+    {
+        this.GetComponent<Animator>().SetBool("DisableBlock", false);
+        this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+    }
 
 }
