@@ -21,6 +21,7 @@ public class HUDManager : MonoBehaviour
 
     public GameObject scoreText;
     public Transform restartButton;
+    public GameObject backText;
 
     public GameObject gameoverText;
     private AudioMixerSnapshot snapshot;
@@ -56,8 +57,11 @@ public class HUDManager : MonoBehaviour
         gameoverText.SetActive(false);
         highscoreText.SetActive(false);
         pausebtn.SetActive(true);
+        backText.SetActive(false);
         scoreText.transform.localPosition = scoreTextPosition[0];
         restartButton.localPosition = restartButtonPosition[0];
+
+        gameScore.SetValue(0);
 
         snapshot = mixer.FindSnapshot("Default");
         snapshot.TransitionTo(0.01f); //transition to snapshot
@@ -74,6 +78,7 @@ public class HUDManager : MonoBehaviour
     {
         gameoverText.SetActive(true);
         pausebtn.SetActive(false);
+        backText.SetActive(true);
         scoreText.transform.localPosition = scoreTextPosition[1];
         restartButton.localPosition = restartButtonPosition[1];
 

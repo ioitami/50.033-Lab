@@ -14,17 +14,22 @@ public class GameManager : Singleton<GameManager>
 
     public IntVariable gameScore;
 
+    public GameConstants SMB;
+
     void Start()
     {
         gameStart.Invoke();
         Time.timeScale = 1.0f;
         // subscribe to scene manager scene change
         SceneManager.activeSceneChanged += SceneSetup;
+
+        SMB.upSpeed = 30;
     }
     public void SceneSetup(Scene current, Scene next)
     {
         gameStart.Invoke();
         SetScore();
+        SMB.upSpeed = 30;
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class GameManager : Singleton<GameManager>
         SetScore();
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
+        SMB.upSpeed = 30;
     }
 
     public void IncreaseScore(int increment)

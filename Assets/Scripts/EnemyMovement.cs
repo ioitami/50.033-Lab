@@ -92,7 +92,13 @@ public class EnemyMovement : MonoBehaviour
             this.GetComponent<BoxCollider2D>().enabled = false;
             StartCoroutine(makeInvis(1f));
         }
+        if (other.gameObject.layer == 10) // if hitting Pipe, flip travel direction
+        {
+            Debug.Log("Goomba hit pipe");
+            velocity = velocity * -1;
+        }
     }
+
 
     IEnumerator makeInvis(float delay){
         yield return new WaitForSeconds(delay);

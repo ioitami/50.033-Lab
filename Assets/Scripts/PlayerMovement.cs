@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         // subscribe to scene manager scene change
         SceneManager.activeSceneChanged += SetStartingPosition;
+
     }
 
     public void SetStartingPosition(Scene current, Scene next)
@@ -136,6 +137,8 @@ public class PlayerMovement : MonoBehaviour
     private bool jumpedState = false;
     public void Jump()
     {
+        upSpeed = gameConstants.upSpeed;
+
         if (alive && onGroundState)
         {
             // jump
@@ -149,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
     }
     public void JumpHold()
     {
+        upSpeed = gameConstants.upSpeed;
+
         if (alive && jumpedState)
         {
             // jump higher

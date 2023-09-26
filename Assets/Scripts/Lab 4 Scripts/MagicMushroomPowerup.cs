@@ -8,6 +8,8 @@ public class MagicMushroomPowerup : BasePowerup
 {
     // setup this object's type
     // instantiate variables
+    public GameConstants SMB;
+    
     protected override void Start()
     {
         base.Start(); // call base class Start()
@@ -30,7 +32,7 @@ public class MagicMushroomPowerup : BasePowerup
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: do something when colliding with Player
-
+            SMB.upSpeed = 40;
             // then destroy powerup (optional)
             gameObject.SetActive(false);
 
@@ -72,6 +74,5 @@ public class MagicMushroomPowerup : BasePowerup
     public override void ApplyPowerup(MonoBehaviour i)
     {
         // TODO: do something with the object
-
     }
 }
