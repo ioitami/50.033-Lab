@@ -54,7 +54,11 @@
         "ProjectSettings/": true,
         "UserSettings/": true,
         "temp/": true,
-        "Temp/": true
+        "Temp/": true,
+        "**/*.*.meta": true,
+        "**/Library": true,
+        "**/ProjectSettings": true,
+        "**/Temp": true
     },
-    "dotnet.defaultSolution": "50.033-Lab.sln"
+    "dotnet.defaultSolution": "My project.sln"
 }

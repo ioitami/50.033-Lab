@@ -56,6 +56,7 @@ public class JumpOverGoomba : MonoBehaviour
         if (col.gameObject.CompareTag("Ground")) onGroundState = true;
     }
 
+
     private bool onGroundCheck()
     {
         if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, maxDistance, layerMask))
@@ -70,10 +71,12 @@ public class JumpOverGoomba : MonoBehaviour
         }
     }
 
-    //helper
+
+    // helper
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawCube(transform.position - transform.up * maxDistance, boxSize);
     }
+
 }

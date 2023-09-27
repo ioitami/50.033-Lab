@@ -10,12 +10,9 @@ public class EnemyMovement : MonoBehaviour
     private float enemyPatroltime = 2.0f;
     private int moveRight = -1;
     private Vector2 velocity;
-
     private Rigidbody2D enemyBody;
-
     public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
-    // Start is called before the first frame update
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
