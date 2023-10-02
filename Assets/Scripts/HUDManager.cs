@@ -61,7 +61,6 @@ public class HUDManager : MonoBehaviour
         scoreText.transform.localPosition = scoreTextPosition[0];
         restartButton.localPosition = restartButtonPosition[0];
 
-        gameScore.SetValue(0);
 
         snapshot = mixer.FindSnapshot("Default");
         snapshot.TransitionTo(0.01f); //transition to snapshot

@@ -33,6 +33,7 @@ public class MagicMushroomPowerup : BasePowerup
         {
             // TODO: do something when colliding with Player
             SMB.upSpeed = 40;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().color = Color.red;
             // then destroy powerup (optional)
             gameObject.SetActive(false);
 

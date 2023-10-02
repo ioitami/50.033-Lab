@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         // subscribe to scene manager scene change
         SceneManager.activeSceneChanged += SetStartingPosition;
-
+        this.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void SetStartingPosition(Scene current, Scene next)
@@ -210,6 +210,8 @@ public class PlayerMovement : MonoBehaviour
         // reset camera position
         camBG = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         camBG.backgroundColor = new Color(138f / 255f, 139f / 255f, 255f / 255f);
+
+        this.GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     void PlayJumpSound()
