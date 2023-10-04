@@ -24,6 +24,7 @@ public class HUDManager : MonoBehaviour
     public GameObject backText;
 
     public GameObject gameoverText;
+
     private AudioMixerSnapshot snapshot;
     public AudioMixer mixer;
     public GameObject pausebtn;
