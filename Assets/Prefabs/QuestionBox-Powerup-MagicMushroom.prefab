@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1871462828476543482}
   - component: {fileID: 3998737230653530213}
   - component: {fileID: 665150476683763594}
-  - component: {fileID: 2442569685868546129}
   m_Layer: 0
   m_Name: Powerup
   m_TagString: Untagged
@@ -204,22 +203,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2442569685868546129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308714287035386026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f244b3cc28a232f46a91c03b2a843703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  spawned: 0
-  SMB: {fileID: 11400000, guid: 1e1b0a547cb56324485289590b99bbd7, type: 2}
-  powerupAudio: {fileID: 665150476683763594}
 --- !u!1 &2512305870312320371
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +275,6 @@ GameObject:
   - component: {fileID: 8675919971890887080}
   - component: {fileID: 1197476894224965052}
   - component: {fileID: 3702034829455746596}
-  - component: {fileID: 8855508713613499163}
   m_Layer: 9
   m_Name: Mushroom
   m_TagString: Untagged
@@ -388,34 +370,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8855508713613499163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354288848097213519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bb9bce19f944b498d5b78ea755311d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2442569685868546129}
-        m_TargetAssemblyTypeName: MagicMushroomPowerup, Assembly-CSharp
-        m_MethodName: SpawnPowerup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5414845603165697812
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +384,6 @@ GameObject:
   - component: {fileID: 2826972244387784021}
   - component: {fileID: 2060192752964795573}
   - component: {fileID: 6253148076740020542}
-  - component: {fileID: 7913983516395802278}
   m_Layer: 8
   m_Name: question_block-wMushroom
   m_TagString: Untagged
@@ -619,17 +572,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7913983516395802278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5414845603165697812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2001ac70f4b72be4c9683088def54547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  powerupAnimator: {fileID: 3702034829455746596}
-  powerup: {fileID: 2442569685868546129}
