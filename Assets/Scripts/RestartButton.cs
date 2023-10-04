@@ -1,14 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class RestartButton : MonoBehaviour, IInteractiveButton
+
+public class GameEvent<T> : ScriptableObject
 {
-    public AudioSource gameSound;
-    public void ButtonClick()
+    private readonly List<GameEventListener<T>> eventListeners =
+        new List<GameEventListener<T>>();
+
+    public void Raise(T data)
     {
-        GameManager.instance.GameRestart();
-        gameSound.Stop();
-        gameSound.Play();
+        for (int i = eventListeners.Count - 1; i >= 0; i--)
+            eventListeners[i].OnEventRaised(data);
+    }
+
+    public void RegisterListener(GameEventListener<T> listener)
+    {
+        if (!eventListeners.Contains(listener))
+            eventListeners.Add(listener);
+    }
+
+    public void UnregisterListener(GameEventListener<T> listener)
+    {
+        if (eventListeners.Contains(listener))
+            eventListeners.Remove(listener);
     }
 }

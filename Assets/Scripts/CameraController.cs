@@ -40,4 +40,9 @@ public class CameraController : MonoBehaviour
         if (desiredX  >  startX  &&  desiredX  <  endX)
         this.transform.position  =  new  Vector3(desiredX, this.transform.position.y, this.transform.position.z);
     }
+
+    public void GameRestart()
+    {
+        transform.position = new Vector2(startX, 2f);
+    }
 }

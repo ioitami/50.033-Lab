@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using wk5GameEvent;
 
 public abstract class Variable<T> : ScriptableObject
 {
