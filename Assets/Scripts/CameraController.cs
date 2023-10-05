@@ -40,4 +40,12 @@ public class CameraController : MonoBehaviour
         if (desiredX  >  startX  &&  desiredX  <  endX)
         this.transform.position  =  new  Vector3(desiredX, this.transform.position.y, this.transform.position.z);
     }
+
+    public void GameRestart()
+    {
+        float desiredX = player.position.x + offset;
+        // check if desiredX is within startX and endX
+        if (desiredX > startX && desiredX < endX)
+        this.transform.position = new Vector3(desiredX, this.transform.position.y, this.transform.position.z);
+    }
 }
