@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -42,12 +42,12 @@ public class PlayerMovement : MonoBehaviour
     public bool alive = true;
 
     public UnityEvent onGameOver;
+    public UnityEvent<int> onScoreIncrease;
 
 
     void Awake(){
         // other instructions
         // subscribe to Game Restart event
-        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     void Start()
@@ -194,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
         else if(other.gameObject.CompareTag("Enemy") && alive){
             Debug.Log("Stomped goomba:" + other.gameObject.name);
             //StompBelow?.Invoke(other.gameObject.name);
-            GameManager.instance.IncreaseScore(1);
+            onScoreIncrease.Invoke(1);
         }
     }
 
@@ -226,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
     {
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
-    void OnGameOver()
+    public void OnGameOver()
     {
         // stop time
         Time.timeScale = 0.0f;

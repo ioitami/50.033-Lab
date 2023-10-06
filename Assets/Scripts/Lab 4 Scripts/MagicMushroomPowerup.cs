@@ -17,8 +17,6 @@ public class MagicMushroomPowerup : BasePowerup
         this.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         this.GetComponent<Rigidbody2D>().simulated = false;
         StartCoroutine(ActiveObject());
-
-        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     IEnumerator ActiveObject()

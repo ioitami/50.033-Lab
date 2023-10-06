@@ -75,6 +75,8 @@ GameObject:
   - component: {fileID: 2826972244387784021}
   - component: {fileID: 2060192752964795573}
   - component: {fileID: 2453093432604125629}
+  - component: {fileID: 2894659921533077594}
+  - component: {fileID: 1366780981466388523}
   m_Layer: 8
   m_Name: brick_block1_1
   m_TagString: Untagged
@@ -263,6 +265,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2894659921533077594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414845603165697812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00e0dc870c7c5f44b7a70307aa57111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupAnimator: {fileID: 2453093432604125629}
+  powerup: {fileID: 5756172732493534999}
+  isBreakable: 0
+  initialNumCoins: 1
+  numCoins: 1
+--- !u!114 &1366780981466388523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414845603165697812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e83a3264954da46aa1807df48c507d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e5ac90c713812c94e880471534db1913, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2894659921533077594}
+        m_TargetAssemblyTypeName: BrickPowerupController, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &3712646194361445160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,6 +367,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
+--- !u!114 &5756172732493534999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8964398090434886719, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}
+  m_PrefabInstance: {fileID: 3712646194361445160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278c7fdc0a3ef954a8f77e2334ac59d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5845720502676423711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7108320512977252151, guid: 7f8a8a9af618b56448b10b94c6859045, type: 3}

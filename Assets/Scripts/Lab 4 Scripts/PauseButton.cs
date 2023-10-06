@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PauseButtonController : MonoBehaviour, IInteractiveButton
 {
@@ -12,6 +13,10 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
     private Image image;
     // Start is called before the first frame update
     public AudioSource gameSound;
+
+    public UnityEvent gamePause;
+    public UnityEvent gameResumed;
+
     void Start()
     {
         image = GetComponent<Image>();
@@ -25,11 +30,13 @@ public class PauseButtonController : MonoBehaviour, IInteractiveButton
         {
             image.sprite = playIcon;
             gameSound.Pause();
+            gamePause.Invoke();
         }
         else
         {
             image.sprite = pauseIcon;
             gameSound.Play();
+            gameResumed.Invoke();
         }
     }
 }

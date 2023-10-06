@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 9050678075577959317}
   - component: {fileID: 5516097196477903279}
   - component: {fileID: 1723711265369760436}
-  - component: {fileID: 1754114631691906793}
   - component: {fileID: 2326617552507339875}
+  - component: {fileID: 1754114631691906793}
   m_Layer: 7
   m_Name: brown_goomba_2
   m_TagString: Enemy
@@ -279,6 +279,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2326617552507339875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579071228992418841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c22dff5b0aebcd40a4b7b4a6a0425cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goombaAnimator: {fileID: 5516097196477903279}
+  enemyAudio: {fileID: 1723711265369760436}
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1754114631691906793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -307,18 +322,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2326617552507339875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579071228992418841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c22dff5b0aebcd40a4b7b4a6a0425cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goombaAnimator: {fileID: 5516097196477903279}
-  enemyAudio: {fileID: 1723711265369760436}
-  startPosition: {x: 0, y: 0, z: 0}

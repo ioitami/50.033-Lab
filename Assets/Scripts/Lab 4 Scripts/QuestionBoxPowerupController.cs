@@ -13,7 +13,7 @@ public class QuestionBoxPowerupController : MonoBehaviour, IPowerupController
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
-        GameManager.instance.gameRestart.AddListener(GameRestart);
+        //GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame

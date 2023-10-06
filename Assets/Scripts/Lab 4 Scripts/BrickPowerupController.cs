@@ -20,8 +20,6 @@ public class BrickPowerupController : MonoBehaviour, IPowerupController
         player = GameObject.FindGameObjectWithTag("Player");
 
         numCoins = initialNumCoins;
-
-        GameManager.instance.gameRestart.AddListener(GameRestart);
     }
 
     // Update is called once per frame

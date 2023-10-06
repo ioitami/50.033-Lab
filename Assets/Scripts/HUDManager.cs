@@ -33,10 +33,6 @@ public class HUDManager : MonoBehaviour
     {
         // other instructions
         // subscribe to events
-        GameManager.instance.gameStart.AddListener(GameStart);
-        GameManager.instance.gameOver.AddListener(GameOver);
-        GameManager.instance.gameRestart.AddListener(GameStart);
-        GameManager.instance.scoreChange.AddListener(SetScore);
 
     }
 
@@ -55,6 +51,7 @@ public class HUDManager : MonoBehaviour
     public void GameStart()
     {
         // hide gameover text
+        Debug.Log("GAMESTART");
         gameoverText.SetActive(false);
         highscoreText.SetActive(false);
         pausebtn.SetActive(true);
@@ -76,6 +73,7 @@ public class HUDManager : MonoBehaviour
 
     public void GameOver()
     {
+        Debug.Log("GAMEOVER");
         gameoverText.SetActive(true);
         pausebtn.SetActive(false);
         backText.SetActive(true);
