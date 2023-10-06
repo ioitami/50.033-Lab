@@ -1935,6 +1935,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 2326617552507339875, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: startPosition.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326617552507339875, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: startPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3356580156600067141, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20
@@ -3048,8 +3056,12 @@ GameObject:
   - component: {fileID: 1393404860}
   - component: {fileID: 1393404863}
   - component: {fileID: 1393404865}
+  - component: {fileID: 1393404870}
   - component: {fileID: 1393404867}
-  - component: {fileID: 1393404868}
+  - component: {fileID: 1393404873}
+  - component: {fileID: 1393404869}
+  - component: {fileID: 1393404872}
+  - component: {fileID: 1393404871}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -3341,7 +3353,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1393404868}
+      - m_Target: {fileID: 1393404873}
         m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
         m_MethodName: OnMoveAction
         m_Mode: 0
@@ -3357,7 +3369,7 @@ MonoBehaviour:
     m_ActionName: gameplay/move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1393404868}
+      - m_Target: {fileID: 1393404873}
         m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
         m_MethodName: OnJumpAction
         m_Mode: 0
@@ -3373,7 +3385,7 @@ MonoBehaviour:
     m_ActionName: gameplay/jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1393404868}
+      - m_Target: {fileID: 1393404873}
         m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
         m_MethodName: OnJumpHoldAction
         m_Mode: 0
@@ -3389,7 +3401,7 @@ MonoBehaviour:
     m_ActionName: gameplay/jumphold[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1393404868}
+      - m_Target: {fileID: 1393404873}
         m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
         m_MethodName: OnClickAction
         m_Mode: 0
@@ -3405,7 +3417,7 @@ MonoBehaviour:
     m_ActionName: gameplay/click[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1393404868}
+      - m_Target: {fileID: 1393404873}
         m_TargetAssemblyTypeName: ActionManager, Assembly-CSharp
         m_MethodName: OnPointAction
         m_Mode: 0
@@ -3424,7 +3436,114 @@ MonoBehaviour:
   m_DefaultActionMap: gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1393404868
+--- !u!114 &1393404869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393404858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e83a3264954da46aa1807df48c507d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: e5ac90c713812c94e880471534db1913, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1393404870}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1393404870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393404858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432d095811d5aa446bb853acb946f0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 1e1b0a547cb56324485289590b99bbd7, type: 2}
+  scoreText: {fileID: 1635523141}
+  enemies: {fileID: 500389776}
+  Camgameover: {fileID: 519420031}
+  marioAnimator: {fileID: 1393404865}
+  gameCamera: {fileID: 519420032}
+  marioAudio: {fileID: 1393404866}
+  marioDeath: {fileID: 749084746}
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 8f49c656c2fc4da4580bfa219f1889c1, type: 2}
+        m_TargetAssemblyTypeName: GameEvent`1[[UnityEngine.Object, UnityEngine
+        m_MethodName: Raise
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1393404871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393404858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e83a3264954da46aa1807df48c507d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 2fd27204e8e47974fa3dfba2f4fbf3a2, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1393404870}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDamageMario
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1393404872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393404858}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e469f1c68009742a8305009f275f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 0}
+  Response:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1393404873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3439,7 +3558,7 @@ MonoBehaviour:
   jump:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1393404870}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: Jump
         m_Mode: 1
@@ -3454,7 +3573,7 @@ MonoBehaviour:
   jumpHold:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1393404870}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: JumpHold
         m_Mode: 1
@@ -3469,7 +3588,7 @@ MonoBehaviour:
   moveCheck:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1393404870}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: MoveCheck
         m_Mode: 0
@@ -4081,7 +4200,19 @@ MonoBehaviour:
   gameSound: {fileID: 1555913776}
   gameRestart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e5ac90c713812c94e880471534db1913, type: 2}
+        m_TargetAssemblyTypeName: GameEvent`1[[UnityEngine.Object, UnityEngine
+        m_MethodName: Raise
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1632932368
 GameObject:
   m_ObjectHideFlags: 0
@@ -5186,6 +5317,14 @@ PrefabInstance:
     - target: {fileID: 1579071228992418841, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326617552507339875, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: startPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2326617552507339875, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
+      propertyPath: startPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3356580156600067141, guid: 7183d4b7fc629fc46ad32cb704003c01, type: 3}
       propertyPath: m_LocalPosition.x

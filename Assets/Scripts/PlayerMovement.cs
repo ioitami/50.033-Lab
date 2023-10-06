@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
@@ -39,7 +40,9 @@ public class PlayerMovement : MonoBehaviour
 
     [System.NonSerialized]
     public bool alive = true;
-    
+
+    public UnityEvent onGameOver;
+
 
     void Awake(){
         // other instructions
@@ -223,13 +226,18 @@ public class PlayerMovement : MonoBehaviour
     {
         marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
-    void GameOverScene()
+    void OnGameOver()
     {
         // stop time
         Time.timeScale = 0.0f;
         // set gameover scene
-        GameManager.instance.GameOver();
+        onGameOver.Invoke();
         Camgameover.backgroundColor = Color.black;
         //scoreText.transform.localPosition = new Vector3(0, 0, 0);
+    }
+
+    public void OnDamageMario()
+    {
+
     }
 }
