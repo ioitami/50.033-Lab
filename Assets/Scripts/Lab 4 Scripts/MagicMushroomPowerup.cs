@@ -58,6 +58,7 @@ public class MagicMushroomPowerup : BasePowerup
 
     public void GameRestart()
     {
+        Debug.Log("Game reset MUSHROOM");
         gameObject.SetActive(true);
         GameObject.Find("Mushroom").GetComponent<Animator>().SetBool("isSpawned", false);
         this.transform.localPosition = new Vector3(0f, 0f, 0f);

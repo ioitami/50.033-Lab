@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: GameScore
   m_EditorClassIdentifier: 
   DeveloperDescription: 
-  previousHighestValue: 104
+  previousHighestValue: 7

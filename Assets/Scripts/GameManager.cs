@@ -43,20 +43,21 @@ public class GameManager : MonoBehaviour
         // reset score
         gameScore.Value = 0;
         SetScore();
-        gameRestart.Invoke();
+   
         Time.timeScale = 1.0f;
         SMB.upSpeed = 30;
     }
 
     public void IncreaseScore(int increment)
     {
-        gameScore.ApplyChange(1);
+        gameScore.ApplyChange(increment);
         SetScore();
     }
 
     public void SetScore()
     {
         scoreChange.Invoke(gameScore.Value);
+        Debug.Log("gamescore VALUE is :" + gameScore.Value);
     }
 
 

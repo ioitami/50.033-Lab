@@ -21,7 +21,6 @@ public class HUDManager : MonoBehaviour
 
     public GameObject scoreText;
     public Transform restartButton;
-    public GameObject backText;
 
     public GameObject gameoverText;
 
@@ -53,11 +52,12 @@ public class HUDManager : MonoBehaviour
         // hide gameover text
         Debug.Log("GAMESTART");
         gameoverText.SetActive(false);
-        highscoreText.SetActive(false);
+        //highscoreText.SetActive(false);
         pausebtn.SetActive(true);
-        backText.SetActive(false);
+
         scoreText.transform.localPosition = scoreTextPosition[0];
         restartButton.localPosition = restartButtonPosition[0];
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + gameScore.Value;
 
 
         snapshot = mixer.FindSnapshot("Default");
@@ -66,17 +66,17 @@ public class HUDManager : MonoBehaviour
 
     public void SetScore(int score)
     {
-        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + score.ToString();
-        Debug.Log("score is updated!");
+        scoreText.GetComponent<TextMeshProUGUI>().text = "Score: " + gameScore.Value;
+        Debug.Log("score is updated! : " + score);
     }
 
 
     public void GameOver()
     {
-        Debug.Log("GAMEOVER");
+        Debug.Log("GAMEOVERR");
         gameoverText.SetActive(true);
         pausebtn.SetActive(false);
-        backText.SetActive(true);
+
         scoreText.transform.localPosition = scoreTextPosition[1];
         restartButton.localPosition = restartButtonPosition[1];
 
@@ -84,8 +84,8 @@ public class HUDManager : MonoBehaviour
         snapshot.TransitionTo(0.01f); //transition to snapshot
 
         // set highscore
-        highscoreText.GetComponent<TextMeshProUGUI>().text = "TOP- " + gameScore.previousHighestValue.ToString("D6");
-        // show
-        highscoreText.SetActive(true);
+        //highscoreText.GetComponent<TextMeshProUGUI>().text = "TOP- " + gameScore.previousHighestValue.ToString("D6");
+        //// show
+        //highscoreText.SetActive(true);
     }
 }

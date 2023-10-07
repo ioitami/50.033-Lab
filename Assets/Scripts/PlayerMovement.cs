@@ -43,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     public UnityEvent onGameOver;
     public UnityEvent<int> onScoreIncrease;
+    private GameManager manager;
 
 
     void Awake(){
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         // subscribe to scene manager scene change
         SceneManager.activeSceneChanged += SetStartingPosition;
         this.GetComponent<SpriteRenderer>().color = Color.white;
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void SetStartingPosition(Scene current, Scene next)
@@ -194,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
         else if(other.gameObject.CompareTag("Enemy") && alive){
             Debug.Log("Stomped goomba:" + other.gameObject.name);
             //StompBelow?.Invoke(other.gameObject.name);
-            onScoreIncrease.Invoke(1);
+            manager.IncreaseScore(1);
         }
     }
 
@@ -232,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
         Time.timeScale = 0.0f;
         // set gameover scene
         onGameOver.Invoke();
+        Debug.Log("on game over INVOKED");
         Camgameover.backgroundColor = Color.black;
         //scoreText.transform.localPosition = new Vector3(0, 0, 0);
     }
