@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public BoolVariable marioFaceRight;
+
     // Start is called before the first frame update
     public GameConstants gameConstants;
     float deathImpulse;
@@ -94,8 +96,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value == -1 && faceRightState)
         {
+            updateMarioShouldFaceRight(false);
             faceRightState = false;
             marioSprite.flipX = true;
+
             if (marioBody.velocity.x > 0.05f)
                 marioAnimator.SetTrigger("onSkid");
 
@@ -103,8 +107,10 @@ public class PlayerMovement : MonoBehaviour
 
         else if (value == 1 && !faceRightState)
         {
+            updateMarioShouldFaceRight(true);
             faceRightState = true;
             marioSprite.flipX = false;
+
             if (marioBody.velocity.x < -0.05f)
                 marioAnimator.SetTrigger("onSkid");
         }
@@ -243,4 +249,11 @@ public class PlayerMovement : MonoBehaviour
     {
 
     }
+
+    private void updateMarioShouldFaceRight(bool value)
+    {
+        faceRightState = value;
+        marioFaceRight.SetValue(faceRightState);
+    }
+
 }
