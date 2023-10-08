@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4acd52fa265db4cad4f9b966b69f5f, type: 3}
   m_Name: SetupSmallMario
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 61edc9241405186488709ba5aa62db75, type: 2}

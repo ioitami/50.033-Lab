@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4acd52fa265db4cad4f9b966b69f5f, type: 3}
   m_Name: SetupDeadmario
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 0}
+  animatorController: {fileID: 9100000, guid: 25e776b87cc3f1d48abf284c679fd0f5, type: 2}

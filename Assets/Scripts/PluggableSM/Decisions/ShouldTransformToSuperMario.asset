@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7de8614f57ba074d9b28ba2a600eb62, type: 3}
   m_Name: ShouldTransformToSuperMario
   m_EditorClassIdentifier: 
-  map: []
+  map:
+  - fromState: 0
+    powerupCollected: 1
+  - fromState: 0
+    powerupCollected: 4

@@ -3473,6 +3473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432d095811d5aa446bb853acb946f0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  marioFaceRight: {fileID: 11400000, guid: ab90efa10f9005d4aa150417b6558335, type: 2}
   gameConstants: {fileID: 11400000, guid: 1e1b0a547cb56324485289590b99bbd7, type: 2}
   scoreText: {fileID: 1635523141}
   enemies: {fileID: 500389776}
