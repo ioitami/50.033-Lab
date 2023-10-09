@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     public UnityEvent onGameOver;
     public UnityEvent<int> onScoreIncrease;
+    public UnityEvent onDamage;
     private GameManager manager;
 
 
@@ -192,12 +193,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") && alive && other.transform.position.y >= transform.position.y - 0.1f)
         {
-            Debug.Log("Killed by goomba!");
+            Debug.Log("HIT by goomba!");
             Debug.Log(other.transform.position.y + "," + transform.position.y);
+
+            onDamage.Invoke();
             // play death animation
-            marioAnimator.Play("mario-die");
-            marioAudio.PlayOneShot(marioDeath.clip);
-            alive = false;
+            //marioAnimator.Play("mario-die");
+            //marioAudio.PlayOneShot(marioDeath.clip);
+            //alive = false;
+            
         }
         else if(other.gameObject.CompareTag("Enemy") && alive){
             Debug.Log("Stomped goomba:" + other.gameObject.name);
@@ -216,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
 
         // reset animation
         marioAnimator.SetTrigger("gameRestart");
+        marioAnimator.SetBool("onGround", true);
         alive = true;
 
         // reset camera position
@@ -223,6 +228,7 @@ public class PlayerMovement : MonoBehaviour
         camBG.backgroundColor = new Color(138f / 255f, 139f / 255f, 255f / 255f);
 
         this.GetComponent<SpriteRenderer>().color = Color.white;
+        marioAnimator.SetTrigger("gameRestart");
     }
 
     void PlayJumpSound()
@@ -245,9 +251,9 @@ public class PlayerMovement : MonoBehaviour
         //scoreText.transform.localPosition = new Vector3(0, 0, 0);
     }
 
-    public void OnDamageMario()
+    public void DamageMario()
     {
-
+        GetComponent<MarioStateController>().SetPowerup(PowerupType.Damage);
     }
 
     private void updateMarioShouldFaceRight(bool value)

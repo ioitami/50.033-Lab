@@ -74,5 +74,13 @@ public class MagicMushroomPowerup : BasePowerup
     public override void ApplyPowerup(MonoBehaviour i)
     {
         // TODO: do something with the object
+        //base.ApplyPowerup(i);
+        // try
+        MarioStateController mario;
+        bool result = i.TryGetComponent<MarioStateController>(out mario);
+        if (result)
+        {
+            mario.SetPowerup(this.powerupType);
+        }
     }
 }

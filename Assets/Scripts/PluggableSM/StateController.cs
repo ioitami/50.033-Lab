@@ -11,6 +11,7 @@ public abstract class StateController : MonoBehaviour
 
     private bool isActive = true;
 
+
     public virtual void Start()
     {
         OnSetupState(); // setup when game starts
@@ -75,7 +76,10 @@ public abstract class StateController : MonoBehaviour
     }
     /********************************/
 
-
+    public void Fire()
+    {
+        this.currentState.DoEventTriggeredActions(this, ActionType.Attack);
+    }
 
 
 }
