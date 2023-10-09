@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     public UnityEvent onGameOver;
     public UnityEvent<int> onScoreIncrease;
     public UnityEvent onDamage;
+
     private GameManager manager;
 
 
@@ -126,6 +127,12 @@ public class PlayerMovement : MonoBehaviour
             // update animator state
             marioAnimator.SetBool("onGround", onGroundState);
         }
+
+        if (col.gameObject.CompareTag("MagicMushroom"))
+        {
+            Debug.Log("MUSHROOM TAKEN");
+            GetComponent<MarioStateController>().SetPowerup(PowerupType.MagicMushroom);
+        }
     }
 
     // FixedUpdate is called 50 times a second
@@ -191,7 +198,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && alive && other.transform.position.y >= transform.position.y - 0.1f)
+
+        if (other.gameObject.CompareTag("Enemy") && alive && other.transform.position.y >= transform.position.y - 0.6f)
         {
             Debug.Log("HIT by goomba!");
             Debug.Log(other.transform.position.y + "," + transform.position.y);
@@ -208,6 +216,7 @@ public class PlayerMovement : MonoBehaviour
             //StompBelow?.Invoke(other.gameObject.name);
             manager.IncreaseScore(1);
         }
+       
     }
 
     public void GameRestart()

@@ -85,7 +85,7 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && other.transform.position.y - 0.1f >= transform.position.y)
+        if (other.gameObject.CompareTag("Player") && other.transform.position.y - 0.6f >= transform.position.y)
         {
             enemyAudio.PlayOneShot(enemyAudio.clip);
             goombaAnimator.SetBool("isDead", true);

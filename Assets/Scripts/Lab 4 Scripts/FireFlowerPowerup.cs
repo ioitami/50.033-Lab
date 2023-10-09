@@ -71,7 +71,6 @@ public class FireflowerPowerup : BasePowerup
     // interface implementation
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        // TODO: do something with the object
         //base.ApplyPowerup(i);
         // try
         MarioStateController mario;
