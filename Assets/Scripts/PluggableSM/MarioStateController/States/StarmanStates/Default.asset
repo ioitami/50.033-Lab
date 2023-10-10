@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545493cd3131dc54c976ee928e09bb2d, type: 3}
   m_Name: Default
   m_EditorClassIdentifier: 
-  setupActions: []
+  setupActions:
+  - {fileID: 11400000, guid: b84622e37fb55d1458a9611effb90010, type: 2}
+  - {fileID: 11400000, guid: 7779feaf63f24af4fb954aabef3dc4bd, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []
   transitions:
-  - decision: {fileID: 11400000, guid: 66d4a0df3d14c064ba9ea7b3ef72de71, type: 2}
+  - decision: {fileID: 11400000, guid: 93046744839e5ee4a85e27d756fcd829, type: 2}
     trueState: {fileID: 11400000, guid: e5256fd31cf281d4ab539c3fa08b6f45, type: 2}
     falseState: {fileID: 11400000, guid: 9c5b29bbbaed7f24c9a893d3078f0fac, type: 2}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

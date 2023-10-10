@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4291f3a8f1d57e54690fbc10c55b1bf2, type: 3}
   m_Name: StarAction
   m_EditorClassIdentifier: 
-  invincibilityStart: {fileID: 0}
+  colchange: {r: 1, g: 0, b: 0, a: 1}

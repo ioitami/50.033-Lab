@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StarMan
   m_EditorClassIdentifier: 
   setupActions:
-  - {fileID: 11400000, guid: 29decf84b96d1604b9e78b307a966d2c, type: 2}
+  - {fileID: 11400000, guid: 6ddac923b56b8f54f84f32d8de817a1a, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []

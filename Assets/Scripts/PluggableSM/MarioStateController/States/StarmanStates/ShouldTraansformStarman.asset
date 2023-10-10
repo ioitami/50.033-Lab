@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e49a70853bdded42b673579b26d557a, type: 3}
   m_Name: ShouldTraansformStarman
   m_EditorClassIdentifier: 
-  map1: []
+  map1:
+  - fromState1: -1
+    powerupCollected1: 3
