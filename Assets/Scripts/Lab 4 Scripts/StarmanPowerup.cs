@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class FireflowerPowerup : BasePowerup
+public class StarmanPowerup : BasePowerup
 {
     // setup this object's type
     // instantiate variables
@@ -14,12 +14,12 @@ public class FireflowerPowerup : BasePowerup
         //base.Start(); // call base class Start()
         //this.type = PowerupType.FireFlower;
         //StartCoroutine(ActiveObject());
-        Debug.Log("FLOWER IN SCENE");
+        Debug.Log("STAR IN SCENE");
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("FLOWER COLIDED");
+        Debug.Log("STAR COLIDED");
 
         if (col.gameObject.CompareTag("Player"))
         {
@@ -39,9 +39,9 @@ public class FireflowerPowerup : BasePowerup
 
     public void GameRestart()
     {
-        Debug.Log("Game reset FLOWER");
+        Debug.Log("Game reset STARMAN");
         gameObject.SetActive(true);
-        this.transform.position = new Vector3(5f, 5f, 0f);
+        this.transform.position = new Vector3(-2f, 5f, 0f);
 
         //StartCoroutine(ActiveObject());
         //GameObject.Find("Fireflower").GetComponent<Animator>().SetBool("isSpawned", false);

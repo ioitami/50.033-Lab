@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.Events;
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
     // for audio
     public AudioSource marioAudio;
     public AudioSource marioDeath;
+
+    public AudioSource powerUpAudio;
 
 
     //public delegate void StompEnemyBelow(String name);
@@ -121,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
     int collisionLayerMask = (1 << 6) | (1 << 7) | (1 << 8) | (1 << 10);
     void OnCollisionEnter2D(Collision2D col)
     {
+        marioAnimator.SetBool("onGround", true);
+
         if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState)
         {
             onGroundState = true;
@@ -132,6 +137,21 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("MUSHROOM TAKEN");
             GetComponent<MarioStateController>().SetPowerup(PowerupType.MagicMushroom);
+            powerUpAudio.PlayOneShot(powerUpAudio.clip);
+        }
+
+        if (col.gameObject.CompareTag("FireFlower"))
+        {
+            Debug.Log("FLOWER TAKEN");
+            GetComponent<MarioStateController>().SetPowerup(PowerupType.FireFlower);
+            powerUpAudio.PlayOneShot(powerUpAudio.clip);
+        }
+
+        if (col.gameObject.CompareTag("Starman"))
+        {
+            Debug.Log("STAR TAKEN");
+            GetComponent<BuffStateController>().SetPowerup(PowerupType.StarMan);
+            powerUpAudio.PlayOneShot(powerUpAudio.clip);
         }
     }
 
@@ -201,13 +221,21 @@ public class PlayerMovement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy") && alive && other.transform.position.y >= transform.position.y - 0.6f)
         {
-            Debug.Log("HIT by goomba!");
-            Debug.Log(other.transform.position.y + "," + transform.position.y);
+            if (GetComponent<BuffStateController>().currentPowerupType == PowerupType.StarMan)
+            {
+                Debug.Log("Stomped goomba:" + other.gameObject.name);
+                //StompBelow?.Invoke(other.gameObject.name);
+                manager.IncreaseScore(1);
+            }
+            else
+            {
+                Debug.Log("HIT by goomba!");
+                Debug.Log(other.transform.position.y + "," + transform.position.y);
 
-            onDamage.Invoke();
+                onDamage.Invoke();
+            }
             // play death animation
             //marioAnimator.Play("mario-die");
-            //marioAudio.PlayOneShot(marioDeath.clip);
             //alive = false;
             
         }
@@ -217,6 +245,11 @@ public class PlayerMovement : MonoBehaviour
             manager.IncreaseScore(1);
         }
        
+    }
+
+    public void PlayMarioDeath()
+    {
+        marioAudio.PlayOneShot(marioDeath.clip);
     }
 
     public void GameRestart()
@@ -237,7 +270,12 @@ public class PlayerMovement : MonoBehaviour
         camBG.backgroundColor = new Color(138f / 255f, 139f / 255f, 255f / 255f);
 
         this.GetComponent<SpriteRenderer>().color = Color.white;
-        marioAnimator.SetTrigger("gameRestart");
+
+        marioAnimator.SetBool("onGround", true);
+        this.GetComponent<Animator>().Play("mario-Idle", -1, 0f);
+        this.GetComponent<Animator>().Update(0f);
+        marioAnimator.SetBool("onGround", true);
+
     }
 
     void PlayJumpSound()

@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     public GameConstants SMB;
 
+    public GameObject mario;
+    public GameObject fireflower;
+    public GameObject starman;
+
     void Start()
     {
         gameStart.Invoke();
@@ -46,6 +50,11 @@ public class GameManager : MonoBehaviour
    
         Time.timeScale = 1.0f;
         SMB.upSpeed = 30;
+
+        mario.SetActive(false);
+        mario.SetActive(true);
+        fireflower.SetActive(true);
+        starman.SetActive(true);
     }
 
     public void IncreaseScore(int increment)

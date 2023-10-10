@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e4acd52fa265db4cad4f9b966b69f5f, type: 3}
-  m_Name: SetupFireMario
+  m_Script: {fileID: 11500000, guid: 4291f3a8f1d57e54690fbc10c55b1bf2, type: 3}
+  m_Name: DefaultAction
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 8ce434e985cb6c94397e2b97f8d098a4, type: 2}
+  invincibilityStart: {fileID: 0}
+  colchange: {r: 0, g: 0, b: 0, a: 0}

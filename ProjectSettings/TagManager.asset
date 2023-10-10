@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - MagicMushroom
+  - FireFlower
+  - Starman
   layers:
   - Default
   - TransparentFX

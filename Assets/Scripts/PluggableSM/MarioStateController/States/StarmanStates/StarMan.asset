@@ -10,19 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 545493cd3131dc54c976ee928e09bb2d, type: 3}
-  m_Name: SuperMario
+  m_Name: StarMan
   m_EditorClassIdentifier: 
   setupActions:
-  - {fileID: 11400000, guid: ea91b8bbee1d8ed42ba6b6f92806a5eb, type: 2}
-  - {fileID: 11400000, guid: 7f21bbaa7b59edd43979144855076b30, type: 2}
+  - {fileID: 11400000, guid: 29decf84b96d1604b9e78b307a966d2c, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []
   transitions:
-  - decision: {fileID: 11400000, guid: b83137bf4411b76408c35a66cac458ef, type: 2}
-    trueState: {fileID: 11400000, guid: 13490d1cf46bef342b2652ca6b369688, type: 2}
-    falseState: {fileID: 11400000, guid: 9c5b29bbbaed7f24c9a893d3078f0fac, type: 2}
-  - decision: {fileID: 11400000, guid: 674bd441199cd1746b774941ee97333b, type: 2}
-    trueState: {fileID: 11400000, guid: 1c53631e2fdc6ac4eb7880390e9461da, type: 2}
+  - decision: {fileID: 11400000, guid: 07f61aad486b6c24aa8a26d073a5db43, type: 2}
+    trueState: {fileID: 11400000, guid: 5981732a56f1ade4684475d0616dd32d, type: 2}
     falseState: {fileID: 11400000, guid: 9c5b29bbbaed7f24c9a893d3078f0fac, type: 2}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
